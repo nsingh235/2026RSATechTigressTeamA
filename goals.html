@@ -3,241 +3,106 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Goals Tracker</title>
+<title>Pieceful - Goals</title>
+
+<link rel="stylesheet" href="styles.css">
 
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #fff0f5;
-    margin: 0;
-    text-align: center;
-    padding: 20px;
-  }
+/* Extra styling just for goals */
 
-  .card {
-    background: white;
-    padding: 15px;
-    margin: 15px auto;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  }
+.goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  input, select {
-    padding: 8px;
-    margin: 5px;
-    width: 70%;
-  }
+.category {
+  font-size: 12px;
+  background: #ffe5ec;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
 
-  button {
-    background: #80ed99;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-  }
+.subtask-input {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
 
-  button:hover {
-    background: #57cc99;
-  }
+.subtask-input input {
+  flex: 1;
+}
 
-  .progress-bar {
-    height: 15px;
-    background: #eee;
-    border-radius: 10px;
-    margin-top: 10px;
-  }
-
-  .progress {
-    height: 100%;
-    background: #ff8fab;
-    width: 0%;
-    border-radius: 10px;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  li {
-    margin: 5px 0;
-  }
-
-  .completed {
-    text-decoration: line-through;
-    color: gray;
-  }
+.progress-text {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #555;
+}
 </style>
 </head>
 
 <body>
 
-<h1>🎯 Goals Tracker</h1>
+<div class="phone">
 
-<div class="card">
-  <h2>Add Goal</h2>
-  <input id="goalTitle" placeholder="Goal title" />
-  
-  <select id="category">
-    <option>Academic</option>
-    <option>Short Term</option>
-    <option>Long Term</option>
-    <option>Personal</option>
-    <option>Weekly</option>
-  </select>
-
-  <button onclick="addGoal()">Add Goal</button>
-</div>
-
-<div id="goalsContainer"></div>
-
-<div class="card">
-  <h2>📊 Overall Progress</h2>
-  <div class="progress-bar">
-    <div class="progress" id="progressBar"></div>
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <div>9:41</div>
+    <div>🔋</div>
   </div>
-  <p id="progressText">0%</p>
+
+  <!-- Header -->
+  <div class="top-header">
+    <p>🎯 Goals</p>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Add Goal -->
+    <div class="card">
+      <h2>New Goal</h2>
+
+      <input id="goalTitle" placeholder="What do you want to achieve?" />
+
+      <select id="category">
+        <option>Academic</option>
+        <option>Short Term</option>
+        <option>Long Term</option>
+        <option>Personal</option>
+        <option>Weekly</option>
+      </select>
+
+      <button class="btn" onclick="addGoal()">+ Add Goal</button>
+    </div>
+
+    <!-- Goals List -->
+    <div id="goalsContainer"></div>
+
+    <!-- Progress -->
+    <div class="card">
+      <h2>📊 Progress</h2>
+
+      <div class="progress-bar">
+        <div class="progress" id="progressBar"></div>
+      </div>
+
+      <p class="progress-text" id="progressText">0% complete</p>
+    </div>
+
+  </div>
+
+  <!-- Menu -->
+  <div class="menu">
+    <a href="index.html">Home 🏠</a>
+    <a href="health.html">Health ❤️</a>
+    <a href="goals.html">Goals 📊</a>
+    <a href="history.html">History 📅</a>
+  </div>
+
 </div>
 
-<script>
-/* -----------------------
-   DATA (like your store)
-------------------------*/
-let goals = [
-  {
-    id: 1,
-    title: "Finish project report",
-    category: "Academic",
-    completed: false,
-    subtasks: [
-      { id: 1, title: "Write intro", completed: true },
-      { id: 2, title: "Add references", completed: false },
-    ],
-  },
-];
-
-/* -----------------------
-   RENDER GOALS
-------------------------*/
-function renderGoals() {
-  const container = document.getElementById("goalsContainer");
-  container.innerHTML = "";
-
-  goals.forEach(goal => {
-    let div = document.createElement("div");
-    div.className = "card";
-
-    let html = `
-      <h3>${goal.title} (${goal.category})</h3>
-      <ul>
-    `;
-
-    goal.subtasks.forEach(task => {
-      html += `
-        <li class="${task.completed ? "completed" : ""}">
-          <input type="checkbox" ${task.completed ? "checked" : ""} 
-            onclick="toggleSubtask(${goal.id}, ${task.id})">
-          ${task.title}
-        </li>
-      `;
-    });
-
-    html += `
-      </ul>
-
-      <input id="task-${goal.id}" placeholder="Add subtask"/>
-      <button onclick="addSubtask(${goal.id})">Add Subtask</button>
-    `;
-
-    div.innerHTML = html;
-    container.appendChild(div);
-  });
-
-  updateProgress();
-}
-
-/* -----------------------
-   ADD GOAL
-------------------------*/
-function addGoal() {
-  let title = document.getElementById("goalTitle").value;
-  let category = document.getElementById("category").value;
-
-  if (!title) return;
-
-  goals.push({
-    id: Date.now(),
-    title,
-    category,
-    completed: false,
-    subtasks: []
-  });
-
-  document.getElementById("goalTitle").value = "";
-  renderGoals();
-}
-
-/* -----------------------
-   ADD SUBTASK
-------------------------*/
-function addSubtask(goalId) {
-  let input = document.getElementById(`task-${goalId}`);
-  if (!input.value) return;
-
-  let goal = goals.find(g => g.id === goalId);
-
-  goal.subtasks.push({
-    id: Date.now(),
-    title: input.value,
-    completed: false
-  });
-
-  input.value = "";
-  renderGoals();
-}
-
-/* -----------------------
-   TOGGLE SUBTASK
-------------------------*/
-function toggleSubtask(goalId, taskId) {
-  let goal = goals.find(g => g.id === goalId);
-  let task = goal.subtasks.find(t => t.id === taskId);
-
-  task.completed = !task.completed;
-
-  renderGoals();
-}
-
-/* -----------------------
-   PROGRESS (like $derived)
-------------------------*/
-function updateProgress() {
-  let allTasks = [];
-
-  goals.forEach(goal => {
-    if (goal.subtasks.length > 0) {
-      allTasks.push(...goal.subtasks);
-    } else {
-      allTasks.push({ completed: goal.completed });
-    }
-  });
-
-  let completed = allTasks.filter(t => t.completed).length;
-  let total = allTasks.length;
-
-  let percent = total ? Math.round((completed / total) * 100) : 0;
-
-  document.getElementById("progressBar").style.width = percent + "%";
-  document.getElementById("progressText").innerText = percent + "%";
-}
-
-/* -----------------------
-   INIT
-------------------------*/
-renderGoals();
-</script>
+<script src="goals.js"></script>
 
 </body>
 </html>
