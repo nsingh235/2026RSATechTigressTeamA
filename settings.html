@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pieceful - Settings</title>
+
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* Card styling */
+.card {
+  background: white;
+  margin: 16px auto;
+  padding: 18px;
+  border-radius: 18px;
+  width: 90%;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  text-align: left;
+}
+
+.card h2 {
+  color: #ff8fab;
+  margin-bottom: 12px;
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.setting-item input {
+  width: auto;
+  cursor: pointer;
+}
+
+.btn {
+  background-color: #80ed99;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background-color: #57cc99;
+  transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="phone">
+
+  <!-- Top Header -->
+  <div class="top-header">
+    <div class="left-group">
+      <img src="App LOGO (90x90).png" class="logo" alt="Logo">
+      <span class="page-title">Settings</span>
+    </div>
+    <div class="right-group">
+      <a href="index.html" class="nav-btn">🏠</a>
+      <a href="settings.html" class="nav-btn">⚙️</a>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <div class="card">
+      <h2>Customize Tabs</h2>
+
+      <div class="setting-item">
+        <label for="tabExercise">Exercise</label>
+        <input type="checkbox" id="tabExercise" data-tab="Exercise">
+      </div>
+
+      <div class="setting-item">
+        <label for="tabNutrition">Nutrition</label>
+        <input type="checkbox" id="tabNutrition" data-tab="Nutrition">
+      </div>
+
+      <div class="setting-item">
+        <label for="tabGoals">Goals</label>
+        <input type="checkbox" id="tabGoals" data-tab="Goals">
+      </div>
+
+      <div class="setting-item">
+        <label for="tabHistory">History</label>
+        <input type="checkbox" id="tabHistory" data-tab="History">
+      </div>
+
+      <button class="btn" onclick="saveTabs()">Save Settings</button>
+    </div>
+
+  </div>
+
+  <!-- Bottom Menu -->
+  <div class="menu" id="menu">
+    <a href="exercise.html">🏃 Exercise</a>
+    <a href="nutrition.html">🍽 Nutrition</a>
+    <a href="goals.html">📊 Goals</a>
+    <a href="history.html">📅 History</a>
+  </div>
+
+</div>
+
+<script>
+// Initialize checkboxes based on localStorage
+const defaultTabs = ["Exercise","Nutrition","Goals","History"];
+const enabledTabs = JSON.parse(localStorage.getItem("enabledTabs")) || defaultTabs;
+
+document.querySelectorAll(".setting-item input").forEach(input => {
+  input.checked = enabledTabs.includes(input.dataset.tab);
+});
+
+// Save user preferences
+function saveTabs() {
+  const checkboxes = document.querySelectorAll(".setting-item input");
+  const newEnabledTabs = [];
+
+  checkboxes.forEach(cb => {
+    if(cb.checked) newEnabledTabs.push(cb.dataset.tab);
+  });
+
+  localStorage.setItem("enabledTabs", JSON.stringify(newEnabledTabs));
+  alert("Tabs updated!");
+
+  // Update bottom menu immediately
+  const menuLinks = document.querySelectorAll("#menu a");
+  menuLinks.forEach(link => {
+    const tabName = link.textContent.replace(/[^a-zA-Z]/g,"").trim();
+    link.style.display = newEnabledTabs.includes(tabName) ? "flex" : "none";
+  });
+}
+</script>
+
+</body>
+</html>
