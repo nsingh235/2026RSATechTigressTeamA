@@ -64,5 +64,5 @@ function addFood(type) {
   loadNutrition();
 }
 
-// Init
+// INIT
 loadNutrition();
