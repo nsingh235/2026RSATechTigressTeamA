@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wellness Tracker</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #fff0f5;
+    margin: 0;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .card {
+    background: white;
+    padding: 15px;
+    margin: 15px auto;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  button {
+    background: #80ed99;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #57cc99;
+  }
+
+  input {
+    padding: 8px;
+    width: 70%;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>🌿 Wellness Tracker</h1>
+
+<!-- EXERCISE -->
+<div class="card">
+  <h2>🏃 Exercise</h2>
+  <input id="exerciseInput" type="number" placeholder="Minutes" />
+  <button onclick="addExercise()">Add Exercise</button>
+
+  <p>Total Exercises Logged: <span id="exerciseCount">0</span></p>
+</div>
+
+<!-- HYDRATION -->
+<div class="card">
+  <h2>💧 Hydration</h2>
+  <button onclick="addWater()">+1 Glass</button>
+
+  <p>Today's Water: <span id="waterCount">0</span> / 8</p>
+</div>
+
+<!-- STREAKS -->
+<div class="card">
+  <h2>🔥 Streaks</h2>
+  <p>Hydration Streak: <span id="hydrationStreak">0</span> days</p>
+  <p>Exercise Streak: <span id="exerciseStreak">0</span> days</p>
+</div>
+
+<script>
+/* -----------------------
+   DATA STORAGE
+------------------------*/
+
+// Equivalent to your Svelte arrays
+let exercises = [];
+let hydration = [];
+
+/* -----------------------
+   GOALS
+------------------------*/
+const goalHydration = 8;
+const goalExercise = 30;
+
+/* -----------------------
+   STREAKS
+------------------------*/
+let hydrationStreak = 0;
+let exerciseStreak = 0;
+
+/* -----------------------
+   ADD EXERCISE
+------------------------*/
+function addExercise() {
+  let input = document.getElementById("exerciseInput");
+  let duration = Number(input.value);
+
+  if (!duration) return;
+
+  exercises.push({
+    date: new Date(),
+    duration: duration
+  });
+
+  document.getElementById("exerciseCount").innerText = exercises.length;
+  input.value = "";
+
+  updateStreaks();
+}
+
+/* -----------------------
+   ADD WATER
+------------------------*/
+function addWater(glasses = 1) {
+  const today = new Date();
+
+  let existing = hydration.find(h =>
+    h.date.getDate() === today.getDate() &&
+    h.date.getMonth() === today.getMonth()
+  );
+
+  if (!existing) {
+    hydration.push({ date: today, glasses });
+  } else {
+    existing.glasses += glasses;
+  }
+
+  updateWaterDisplay();
+  updateStreaks();
+}
+
+/* -----------------------
+   UPDATE WATER DISPLAY
+------------------------*/
+function updateWaterDisplay() {
+  const today = new Date();
+
+  let todayEntry = hydration.find(h =>
+    h.date.getDate() === today.getDate() &&
+    h.date.getMonth() === today.getMonth()
+  );
+
+  let total = todayEntry ? todayEntry.glasses : 0;
+
+  document.getElementById("waterCount").innerText = total;
+}
+
+/* -----------------------
+   UPDATE STREAKS
+------------------------*/
+function updateStreaks() {
+  // Simple streak logic (same-day check simplified)
+
+  let today = new Date();
+
+  // Hydration streak
+  let todayWater = hydration.find(h =>
+    h.date.getDate() === today.getDate()
+  );
+
+  if (todayWater && todayWater.glasses >= goalHydration) {
+    hydrationStreak = 1;
+  }
+
+  // Exercise streak
+  let todayExercise = exercises.filter(e =>
+    e.date.getDate() === today.getDate()
+  );
+
+  let totalExercise = todayExercise.reduce((sum, e) => sum + e.duration, 0);
+
+  if (totalExercise >= goalExercise) {
+    exerciseStreak = 1;
+  }
+
+  document.getElementById("hydrationStreak").innerText = hydrationStreak;
+  document.getElementById("exerciseStreak").innerText = exerciseStreak;
+}
+</script>
+
+</body>
+</html>
