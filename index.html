@@ -1,169 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pieceful</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pieceful</title>
 
-    <style>
-      body {
-        margin: 0;
-        background-color: #fff0f5;
-        text-align: center;
-        padding-bottom: 60px;
-        font-family: Arial, sans-serif;
-      }
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #fce7f3, #e0f7fa);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
 
-      /* Header */
-      .top-header {
-        background-color: #ff8fab;
-        padding: 15px 0;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      }
+    /* Phone Frame */
+    .phone {
+      width: 390px;
+      height: 844px;
+      background-color: #fff0f5;
+      border-radius: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
 
-      .top-header p {
-        margin: 0;
-        font-size: 18px;
-        font-weight: bold;
-        color: white;
-      }
+    /* Status Bar */
+    .status-bar {
+      height: 40px;
+      padding: 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      background: transparent;
+    }
 
-      /* Title */
-      h1 {
-        color: #ff8fab;
-        font-size: 28px;
-        margin-top: 20px;
-      }
+    /* Header */
+    .top-header {
+      background-color: #ff8fab;
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
 
-      h2 {
-        font-size: 22px;
-        color: #333;
-        margin-top: 25px;
-      }
+    .top-header p {
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+    }
 
-      p {
-        font-size: 16px;
-        line-height: 1.5;
-        color: #333;
-      }
+    /* Content */
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: 70px;
+      text-align: center;
+    }
 
-      /* Card */
-      .card {
-        background: white;
-        margin: 30px auto;
-        padding: 20px;
-        border-radius: 15px;
-        width: 80%;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      }
+    h1 {
+      color: #ff8fab;
+      font-size: 26px;
+      margin-top: 20px;
+    }
 
-      /* Button */
-      .btn {
-        background-color: #80ed99;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 16px;
-        margin-top: 15px;
-      }
+    h2 {
+      font-size: 20px;
+      color: #333;
+    }
 
-      .btn:hover {
-        background-color: #57cc99;
-      }
+    p {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.5;
+    }
 
-      /* Menu */
-      .menu {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        font-size: 18px;
-        background-color: #80ed99;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: 12px 0;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-      }
+    /* Card */
+    .card {
+      background: white;
+      margin: 20px auto;
+      padding: 18px;
+      border-radius: 15px;
+      width: 85%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
 
-      .menu a {
-        color: white;
-        text-decoration: none;
-        padding: 8px 12px;
-        border-radius: 8px;
-      }
+    /* Button */
+    .btn {
+      background-color: #80ed99;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+    }
 
-      .menu a:hover {
-        background-color: #57cc99;
-      }
+    .btn:hover {
+      background-color: #57cc99;
+    }
 
-      /* Mobile */
-      @media (max-width: 480px) {
-        h1 {
-          font-size: 22px;
-        }
+    /* Menu (Bottom Nav) */
+    .menu {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: #80ed99;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 12px 0;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        p {
-          font-size: 14px;
-        }
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
 
-        .card {
-          width: 90%;
-        }
+    .menu a:hover {
+      background-color: #57cc99;
+    }
+  </style>
+</head>
 
-        .menu {
-          font-size: 14px;
-        }
-      }
-    </style>
-  </head>
+<body>
 
-  <body>
+  <!-- Phone Frame -->
+  <div class="phone">
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+      <div>9:41</div>
+      <div>🔋</div>
+    </div>
 
     <!-- Header -->
     <div class="top-header">
       <p>🌿 Wellness Hub</p>
     </div>
 
-    <!-- Main -->
-    <h1>Welcome 💗</h1>
+    <!-- Content -->
+    <div class="content">
 
-    <p>
-      Take a moment for yourself. Breathe, reset, and remind yourself of your strength.
-    </p>
+      <h1>Welcome 💗</h1>
 
-    <!-- Affirmations -->
-    <div class="card">
-      <h2>🌸 Daily Affirmation</h2>
-      <p id="affirmation">You are enough just as you are 💖</p>
-      <button class="btn" onclick="newAffirmation()">New Affirmation</button>
+      <p>
+        Take a moment for yourself. Breathe, reset, and remind yourself of your strength.
+      </p>
+
+      <!-- Affirmations -->
+      <div class="card">
+        <h2>🌸 Daily Affirmation</h2>
+        <p id="affirmation">You are enough just as you are 💖</p>
+        <button class="btn" onclick="newAffirmation()">New Affirmation</button>
+      </div>
+
     </div>
 
-    <!-- Menu Bar -->
+    <!-- Menu -->
     <div class="menu">
       <a href="index.html">Home 🏠</a>
       <a href="community.html">Dashboard 📊</a>
     </div>
 
-    <script>
-      const affirmations = [
-        "You are enough 💖",
-        "You are growing 🌱",
-        "You are capable ✨",
-        "You matter 💕",
-        "Keep going 🌟",
-        "You are strong 💪"
-      ];
+  </div>
 
-      function newAffirmation() {
-        let rand = affirmations[Math.floor(Math.random() * affirmations.length)];
-        document.getElementById("affirmation").innerText = rand;
-      }
-    </script>
+  <script>
+    const affirmations = [
+      "You are enough 💖",
+      "You are growing 🌱",
+      "You are capable ✨",
+      "You matter 💕",
+      "Keep going 🌟",
+      "You are strong 💪"
+    ];
 
-  </body>
+    function newAffirmation() {
+      let rand = affirmations[Math.floor(Math.random() * affirmations.length)];
+      document.getElementById("affirmation").innerText = rand;
+    }
+  </script>
+
+</body>
 </html>
