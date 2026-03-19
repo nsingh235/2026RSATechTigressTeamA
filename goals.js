@@ -1,5 +1,12 @@
-// Goal store
-let goals = [];
+const STORAGE_KEY = "pieceful_goals";
+
+// Load goals from localStorage
+let goals = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+// Save goals to localStorage
+function saveGoals() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(goals));
+}
 
 // Add a new goal
 function addGoal() {
@@ -16,10 +23,11 @@ function addGoal() {
   });
 
   document.getElementById("goalTitle").value = "";
+  saveGoals();
   renderGoals();
 }
 
-// Add a subtask to a goal
+// Add a subtask
 function addSubtask(goalId) {
   const input = document.getElementById(`task-${goalId}`);
   if (!input.value) return;
@@ -32,18 +40,20 @@ function addSubtask(goalId) {
   });
 
   input.value = "";
+  saveGoals();
   renderGoals();
 }
 
-// Toggle subtask complete
+// Toggle subtask
 function toggleSubtask(goalId, taskId) {
   const goal = goals.find(g => g.id === goalId);
   const task = goal.subtasks.find(t => t.id === taskId);
   task.completed = !task.completed;
+  saveGoals();
   renderGoals();
 }
 
-// Calculate and update progress
+// Update progress
 function updateProgress() {
   let allTasks = [];
   goals.forEach(goal => {
@@ -73,24 +83,23 @@ function renderGoals() {
         <strong>${goal.title}</strong>
         <span class="category">${goal.category}</span>
       </div>
-      <ul>
     `;
 
+    // Subtasks as checkbox rows
     goal.subtasks.forEach(task => {
-    html += `
-    <div class="task">
-      <label>
-        <input type="checkbox" ${task.completed ? "checked" : ""} 
-          onclick="toggleSubtask(${goal.id}, ${task.id})">
-          ${task.title}
-        </label>
-       <span>DO</span>
-      </div>
-  ` ;
-  });
+      html += `
+        <div class="task">
+          <label>
+            <input type="checkbox" ${task.completed ? "checked" : ""} onclick="toggleSubtask(${goal.id}, ${task.id})">
+            ${task.title}
+          </label>
+          <span>DO</span>
+        </div>
+      `;
+    });
 
+    // Input for new subtasks
     html += `
-      </ul>
       <div class="subtask-input">
         <input id="task-${goal.id}" placeholder="Add step..." />
         <button class="btn" onclick="addSubtask(${goal.id})">+</button>
