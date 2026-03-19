@@ -3,19 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NorthStar Immigration</title>
+    <title>Wellness Hub</title>
+
     <style>
       body {
         margin: 0;
-        background-color: #f4f4f4;
+        background-color: #fff0f5;
         text-align: center;
-        padding-bottom: 60px; /* Space for bottom menu */
+        padding-bottom: 60px;
         font-family: Arial, sans-serif;
       }
 
-      /* Header section styling */
+      /* Header */
       .top-header {
-        background-color: #ffffff;
+        background-color: #ff8fab;
         padding: 15px 0;
         display: flex;
         justify-content: space-around;
@@ -27,56 +28,61 @@
         margin: 0;
         font-size: 18px;
         font-weight: bold;
-        color: #00559f;
+        color: white;
       }
 
-      /* Main title styling */
+      /* Title */
       h1 {
-        color: #00559f;
+        color: #ff8fab;
         font-size: 28px;
         margin-top: 20px;
       }
 
-      h2, h3 {
+      h2 {
         font-size: 22px;
         color: #333;
         margin-top: 25px;
       }
 
-      p, ul {
+      p {
         font-size: 16px;
         line-height: 1.5;
-        margin-bottom: 20px;
         color: #333;
       }
 
-      ul {
-        list-style-type: none;
-        padding: 0;
+      /* Card */
+      .card {
+        background: white;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 15px;
+        width: 80%;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       }
 
-      a {
-        color: #00559f;
-        text-decoration: none;
-        font-weight: bold;
+      /* Button */
+      .btn {
+        background-color: #80ed99;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 15px;
       }
 
-      a:hover {
-        text-decoration: underline;
+      .btn:hover {
+        background-color: #57cc99;
       }
 
-      section {
-        margin-top: 30px;
-      }
-
-      /* Bottom menu styling */
+      /* Menu */
       .menu {
         position: fixed;
         bottom: 0;
         left: 0;
         width: 100%;
         font-size: 18px;
-        background-color: #00559f;
+        background-color: #80ed99;
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -89,119 +95,75 @@
         text-decoration: none;
         padding: 8px 12px;
         border-radius: 8px;
-        transition: background-color 0.3s ease;
       }
 
       .menu a:hover {
-        background-color: #003f72;
+        background-color: #57cc99;
       }
 
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 22px;
-    }
+      /* Mobile */
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 22px;
+        }
 
-    h2, h3 {
-      font-size: 18px;
-    }
+        p {
+          font-size: 14px;
+        }
 
-    p, ul {
-      font-size: 14px;
-    }
+        .card {
+          width: 90%;
+        }
 
-    .top-header {
-      flex-direction: row;
-      padding: 10px 0;
-    }
-
-    .top-header p {
-      font-size: 16px;
-      margin-bottom: 5px;
-    }
-
-    #language {
-      font-size: 14px;
-      padding: 4px;
-      margin-top: 8px;
-    }
-
-    .menu {
-      font-size: 14px;
-      padding: 10px 0;
-      flex-direction: row;
-    }
-
-    .menu a {
-      padding: 6px 10px;
-      margin-bottom: 5px;
-    }
-    body {
-      padding-bottom: 80px;
-    }
-  }
+        .menu {
+          font-size: 14px;
+        }
+      }
     </style>
   </head>
 
   <body>
 
-    <!-- Top Header -->
+    <!-- Header -->
     <div class="top-header">
-    <p>NorthStar Immigration</p>
-    <div>
-    <select id="language" name="language" onchange="window.location.href=this.value;"
-      style="padding:4px 8px; font-size:16px; border-radius:5px; border:1px solid #ccc; color: #00559f; font-weight: bold;">
-      <option value="" disabled selected>Language 🌐</option>
-      <option value="index.html">English 🌐</option>
-      <option value="index_es.html">Spanish 🌐</option>
-      <option value="index_hin.html">Hindi 🌐</option>
-      <option value="index_chi.html">Chinese 🌐</option>
-      <option value="index_ukr.html">Ukrainian 🌐</option>
-  </select>
+      <p>🌿 Wellness Hub</p>
     </div>
-  </div>
 
-
-    <h1>Welcome!</h1>
+    <!-- Main -->
+    <h1>Welcome 💗</h1>
 
     <p>
-      An immigrant’s legal journey can be challenging in the U.S. This app is a centralized database that will help you get one step closer to achieving your American Dream.
+      Take a moment for yourself. Breathe, reset, and remind yourself of your strength.
     </p>
 
-    <h2>What Can You Find Here?</h2>
-    <ul>
-      <li>Find an immigration lawyer</li>
-      <li>Discover immigrant-centric community programs</li>
-      <li>Access frequently asked immigration & related questions</li>
-    </ul>
+    <!-- Affirmations -->
+    <div class="card">
+      <h2>🌸 Daily Affirmation</h2>
+      <p id="affirmation">You are enough just as you are 💖</p>
+      <button class="btn" onclick="newAffirmation()">New Affirmation</button>
+    </div>
 
-    <section id="lawyer-directory">
-      <h2>Lawyer Search</h2>
-      <p>Search for immigration lawyers based on specialization, language, cost, and location.</p>
-    </section>
-
-    <section id="community-programs">
-      <h2>Explore Community Programs for Immigrants</h2>
-      <ul>
-        <li>Education</li>
-        <li>Financial Assistance</li>
-        <li>Support & Resources</li>
-        <li>Employment Services</li>
-        <li>Legal Services</li>
-      </ul>
-    </section>
-
-     <section id="immigration-faq">
-      <h2>Immigration Frequently Asked Questions (FAQs)</h2>
-      <p>Learn more about the U.S immigration process</p>
-    </section>
-
-    <!-- Bottom Menu Bar -->
+    <!-- Menu Bar -->
     <div class="menu">
       <a href="index.html">Home 🏠</a>
-      <a href="lawyer.html">Lawyer 🔍</a>
-      <a href="community.html">Community 🤝</a>
-      <a href="faq.html">FAQ ❓</a>
+      <a href="community.html">Dashboard 📊</a>
     </div>
+
+    <script>
+      const affirmations = [
+        "You are enough 💖",
+        "You are growing 🌱",
+        "You are capable ✨",
+        "You matter 💕",
+        "Keep going 🌟",
+        "You are strong 💪"
+      ];
+
+      function newAffirmation() {
+        let rand = affirmations[Math.floor(Math.random() * affirmations.length)];
+        document.getElementById("affirmation").innerText = rand;
+      }
+    </script>
 
   </body>
 </html>
