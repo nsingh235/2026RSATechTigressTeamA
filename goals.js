@@ -1,108 +1,107 @@
-let goals = JSON.parse(localStorage.getItem("goals")) || [];
+// Goal store
+let goals = [];
 
-/* RENDER */
-function renderGoals() {
-  const container = document.getElementById("goalsContainer");
-  container.innerHTML = "";
-
-  goals.forEach(goal => {
-    let div = document.createElement("div");
-    div.className = "card";
-
-    let completedCount = goal.subtasks.filter(t => t.completed).length;
-    let total = goal.subtasks.length;
-
-    div.innerHTML = `
-      <div class="goal-header">
-        <h3>${goal.title}</h3>
-        <span class="category">${goal.category}</span>
-      </div>
-
-      <p>${completedCount}/${total} tasks complete</p>
-
-      <ul>
-        ${goal.subtasks.map(task => `
-          <li class="${task.completed ? "completed" : ""}">
-            <input type="checkbox" ${task.completed ? "checked" : ""}
-              onclick="toggleSubtask(${goal.id}, ${task.id})">
-            ${task.title}
-          </li>
-        `).join("")}
-      </ul>
-
-      <div class="subtask-input">
-        <input id="task-${goal.id}" placeholder="Add step..." />
-        <button onclick="addSubtask(${goal.id})">+</button>
-      </div>
-    `;
-
-    container.appendChild(div);
-  });
-
-  updateProgress();
-}
-
-/* ADD GOAL */
+// Add a new goal
 function addGoal() {
-  let title = document.getElementById("goalTitle").value;
-  let category = document.getElementById("category").value;
-
+  const title = document.getElementById("goalTitle").value;
+  const category = document.getElementById("category").value;
   if (!title) return;
 
   goals.push({
     id: Date.now(),
     title,
     category,
+    completed: false,
     subtasks: []
   });
 
-  saveGoals();
+  document.getElementById("goalTitle").value = "";
+  renderGoals();
 }
 
-/* ADD SUBTASK */
+// Add a subtask to a goal
 function addSubtask(goalId) {
-  let input = document.getElementById(`task-${goalId}`);
+  const input = document.getElementById(`task-${goalId}`);
   if (!input.value) return;
 
-  let goal = goals.find(g => g.id === goalId);
-
+  const goal = goals.find(g => g.id === goalId);
   goal.subtasks.push({
     id: Date.now(),
     title: input.value,
     completed: false
   });
 
-  saveGoals();
-}
-
-/* TOGGLE */
-function toggleSubtask(goalId, taskId) {
-  let goal = goals.find(g => g.id === goalId);
-  let task = goal.subtasks.find(t => t.id === taskId);
-
-  task.completed = !task.completed;
-
-  saveGoals();
-}
-
-/* SAVE */
-function saveGoals() {
-  localStorage.setItem("goals", JSON.stringify(goals));
+  input.value = "";
   renderGoals();
 }
 
-/* PROGRESS */
-function updateProgress() {
-  let allTasks = goals.flatMap(g => g.subtasks);
-  let completed = allTasks.filter(t => t.completed).length;
-
-  let percent = allTasks.length
-    ? Math.round((completed / allTasks.length) * 100)
-    : 0;
-
-  document.getElementById("progressBar").style.width = percent + "%";
-  document.getElementById("progressText").innerText = percent + "% complete";
+// Toggle subtask complete
+function toggleSubtask(goalId, taskId) {
+  const goal = goals.find(g => g.id === goalId);
+  const task = goal.subtasks.find(t => t.id === taskId);
+  task.completed = !task.completed;
+  renderGoals();
 }
 
-/* INIT */
+// Calculate and update progress
+function updateProgress() {
+  let allTasks = [];
+  goals.forEach(goal => {
+    if (goal.subtasks.length > 0) allTasks.push(...goal.subtasks);
+    else allTasks.push({ completed: goal.completed });
+  });
+
+  const completed = allTasks.filter(t => t.completed).length;
+  const total = allTasks.length;
+  const percent = total ? Math.round((completed / total) * 100) : 0;
+
+  document.getElementById("progressBar").style.width = percent + "%";
+  document.getElementById("progressText").innerText = `${percent}% complete`;
+}
+
+// Render goals
+function renderGoals() {
+  const container = document.getElementById("goalsContainer");
+  container.innerHTML = "";
+
+  goals.forEach(goal => {
+    const div = document.createElement("div");
+    div.className = "card";
+
+    let html = `
+      <div class="goal-header">
+        <strong>${goal.title}</strong>
+        <span class="category">${goal.category}</span>
+      </div>
+      <ul>
+    `;
+
+    goal.subtasks.forEach(task => {
+      html += `
+        <li class="task">
+          <label>
+            <input type="checkbox" ${task.completed ? "checked" : ""} onclick="toggleSubtask(${goal.id}, ${task.id})">
+            ${task.title}
+          </label>
+          <span>DO</span>
+        </li>
+      `;
+    });
+
+    html += `
+      </ul>
+      <div class="subtask-input">
+        <input id="task-${goal.id}" placeholder="Add step..." />
+        <button class="btn" onclick="addSubtask(${goal.id})">+</button>
+      </div>
+    `;
+
+    div.innerHTML = html;
+    container.appendChild(div);
+  });
+
+  updateProgress();
+}
+
+// Initial render
 renderGoals();
