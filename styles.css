@@ -1,3 +1,4 @@
+/* BASE BODY */
 body {
   margin: 0;
   background: linear-gradient(135deg, #fce7f3, #e0f7fa);
@@ -21,46 +22,49 @@ body {
   position: relative;
 }
 
-/* TOP HEADER */
+/* TOP HEADER (compact) */
 .top-header {
   background-color: #ff8fab;
-  padding: 10px 16px;
+  padding: 6px 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 40px;
+  box-sizing: border-box;
 }
 
 /* LEFT SIDE (logo + title) */
 .left-group {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .logo {
-  width: 28px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   display: inline-block;
   vertical-align: middle;
 }
 
 .page-title {
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
+  line-height: 1;
 }
 
 /* RIGHT SIDE (home + settings) */
 .right-group {
   display: flex;
-  gap: 10px;
+  gap: 6px;
 }
 
 .nav-btn {
   color: white;
   text-decoration: none;
-  font-size: 18px;
-  padding: 4px 6px;
+  font-size: 16px;
+  padding: 2px 4px;
   border-radius: 6px;
 }
 
@@ -107,7 +111,6 @@ h1 {
   transition: 0.2s;
 }
 
-/* subtle hover (feels like a real app) */
 .card:hover {
   transform: translateY(-2px);
 }
@@ -129,7 +132,7 @@ h1 {
   transform: scale(1.05);
 }
 
-/* INPUTS (important missing piece) */
+/* INPUTS */
 input, select {
   padding: 8px;
   margin: 8px 0;
@@ -145,7 +148,7 @@ input, select {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: #80ed99; /* back to your main green */
+  background-color: #80ed99;
   display: flex;
   justify-content: space-around;
   padding: 12px 0;
@@ -161,7 +164,29 @@ input, select {
   border-radius: 8px;
 }
 
-/* better interaction */
 .menu a:hover {
   background-color: #57cc99;
+}
+
+/* PROGRESS BAR */
+.progress-bar {
+  height: 12px;
+  background: #eee;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.progress {
+  height: 100%;
+  background: #ff8fab;
+  width: 0%;
+  border-radius: 10px;
+}
+
+/* QUICK BUTTONS */
+.quick-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
