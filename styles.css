@@ -28,6 +28,26 @@ body {
   align-items: center;
 }
 
+.top-nav {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+  background: #ffe5ec;
+}
+
+.top-nav a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #ff8fab;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.top-nav a:hover {
+  background: #ffd6e0;
+}
+
 .top-header {
   background-color: #ff8fab;
   padding: 15px 0;
