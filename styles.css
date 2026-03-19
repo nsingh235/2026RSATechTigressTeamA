@@ -38,8 +38,10 @@ body {
 }
 
 .logo {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .page-title {
