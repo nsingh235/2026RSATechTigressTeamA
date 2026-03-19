@@ -24,8 +24,46 @@ body {
 /* TOP HEADER */
 .top-header {
   background-color: #ff8fab;
-  padding: 15px 0;
-  text-align: center;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LEFT SIDE (logo + title) */
+.left-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  width: 24px;
+  height: 24px;
+}
+
+.page-title {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* RIGHT SIDE (home + settings) */
+.right-group {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+
+.nav-btn:hover {
+  background-color: rgba(255,255,255,0.2);
 }
 
 .brand {
