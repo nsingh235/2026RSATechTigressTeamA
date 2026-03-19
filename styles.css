@@ -87,3 +87,12 @@ h1 {
   color: white;
   text-decoration: none;
 }
+
+.card h2 {
+  color: #ff8fab;
+  margin-bottom: 10px;
+}
+
+.card p {
+  margin: 5px 0;
+}
