@@ -77,16 +77,17 @@ function renderGoals() {
     `;
 
     goal.subtasks.forEach(task => {
-      html += `
-        <li class="task">
-          <label>
-            <input type="checkbox" ${task.completed ? "checked" : ""} onclick="toggleSubtask(${goal.id}, ${task.id})">
-            ${task.title}
-          </label>
-          <span>DO</span>
-        </li>
-      `;
-    });
+    html += `
+    <div class="task">
+      <label>
+        <input type="checkbox" ${task.completed ? "checked" : ""} 
+          onclick="toggleSubtask(${goal.id}, ${task.id})">
+          ${task.title}
+        </label>
+       <span>DO</span>
+      </div>
+  ` ;
+  });
 
     html += `
       </ul>
