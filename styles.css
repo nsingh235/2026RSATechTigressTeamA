@@ -91,7 +91,7 @@ h1 {
   padding: 18px;
   border-radius: 15px;
   width: 85%;
-  text-align: left; /* moved from duplicate rules */
+  text-align: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
