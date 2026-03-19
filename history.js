@@ -20,10 +20,12 @@ function loadHistory() {
     card.className = "card";
 
     card.innerHTML = `
-      <h2>${formatDate(key)}</h2>
-      <p>😊 Mood: ${data.mood || "—"}</p>
-      <p>🏆 Win: ${data.win || "—"}</p>
-    `;
+  <h2>${formatDate(key)}</h2>
+  <p>😊 Mood: ${data.mood || "—"}</p>
+  <p>🏆 Win: ${data.win || "—"}</p>
+  <p>💧 Water: ${data.water || 0}</p>
+  <p>🏃 Exercise: ${data.exercise || 0} min</p>
+`   ;
 
     container.appendChild(card);
   });
