@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NorthStar Immigration</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: #f4f4f4;
+        text-align: center;
+        padding-bottom: 60px; /* Space for bottom menu */
+        font-family: Arial, sans-serif;
+      }
+
+      /* Header section styling */
+      .top-header {
+        background-color: #ffffff;
+        padding: 15px 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .top-header p {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+        color: #00559f;
+      }
+
+      /* Main title styling */
+      h1 {
+        color: #00559f;
+        font-size: 28px;
+        margin-top: 20px;
+      }
+
+      h2, h3 {
+        font-size: 22px;
+        color: #333;
+        margin-top: 25px;
+      }
+
+      p, ul {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      a {
+        color: #00559f;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      section {
+        margin-top: 30px;
+      }
+
+      /* Bottom menu styling */
+      .menu {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        font-size: 18px;
+        background-color: #00559f;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 12px 0;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .menu a {
+        color: white;
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+      }
+
+      .menu a:hover {
+        background-color: #003f72;
+      }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 22px;
+    }
+
+    h2, h3 {
+      font-size: 18px;
+    }
+
+    p, ul {
+      font-size: 14px;
+    }
+
+    .top-header {
+      flex-direction: row;
+      padding: 10px 0;
+    }
+
+    .top-header p {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    #language {
+      font-size: 14px;
+      padding: 4px;
+      margin-top: 8px;
+    }
+
+    .menu {
+      font-size: 14px;
+      padding: 10px 0;
+      flex-direction: row;
+    }
+
+    .menu a {
+      padding: 6px 10px;
+      margin-bottom: 5px;
+    }
+    body {
+      padding-bottom: 80px;
+    }
+  }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Top Header -->
+    <div class="top-header">
+    <p>北星移民</p>
+    <div>
+    <select id="language" name="language" onchange="location = this.value;" 
+        style="padding:4px 8px; font-size:16px; border-radius:5px; border:1px solid #ccc; color: #00559f; font-weight: bold;">
+      <option value="" disabled selected style="color:#00559f; font-weight:bold;">语言 🌐</option>
+      <option value="index.html" style="color:black; font-weight:normal;">英语 🌐</option>
+      <option value="index_es.html" style="color:black; font-weight:normal;">西班牙语 🌐</option>
+      <option value="index_hin.html" style="color:black; font-weight:normal;">印地语 🌐</option>
+      <option value="index_chi.html" style="color:black; font-weight:normal;">中文 🌐</option>
+      <option value="index_ukr.html" style="color:black; font-weight:normal;">乌克兰语 🌐</option>
+    </select>
+    </div>
+  </div>
+
+
+    <h1>欢迎！</h1>
+
+    <p>
+      在美国，移民的法律之路可能充满挑战。这个应用程序是一个集中化的信息平台，帮助您更接近实现您的美国梦。
+    </p>
+
+    <h2>您可以在这里找到什么？</h2>
+    <ul>
+      <li>寻找移民律师</li>
+      <li>发现以移民为中心的社区项目</li>
+      <li>获取常见的移民与相关问题解答</li>
+    </ul>
+
+    <section id="lawyer-directory">
+      <h2>律师搜索</h2>
+      <p>根据专业、语言、费用和地点搜索移民律师。</p>
+    </section>
+
+    <section id="community-programs">
+      <h2>探索面向移民的社区项目</h2>
+      <ul>
+        <li>教育</li>
+        <li>经济援助</li>
+        <li>支持与资源</li>
+        <li>就业服务</li>
+        <li>法律服务</li>
+      </ul>
+    </section>
+
+     <section id="immigration-faq">
+      <h2>移民常见问题</h2>
+      <p>了解更多关于美国移民过程的信息</p>
+    </section>
+
+    <!-- Bottom Menu Bar -->
+    <div class="menu">
+      <a href="index_chi.html">首页 🏠</a>
+      <a href="lawyer_chi.html">律师 🔍</a>
+      <a href="community_chi.html">社区 🤝</a>
+      <a href="faq_chi.html">常见问题 ❓</a>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NorthStar Immigration</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: #f4f4f4;
+        text-align: center;
+        padding-bottom: 60px; /* Space for bottom menu */
+        font-family: Arial, sans-serif;
+      }
+
+      /* Header section styling */
+      .top-header {
+        background-color: #ffffff;
+        padding: 15px 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .top-header p {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+        color: #00559f;
+      }
+
+      /* Main title styling */
+      h1 {
+        color: #00559f;
+        font-size: 28px;
+        margin-top: 20px;
+      }
+
+      h2, h3 {
+        font-size: 22px;
+        color: #333;
+        margin-top: 25px;
+      }
+
+      p, ul {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      a {
+        color: #00559f;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      section {
+        margin-top: 30px;
+      }
+
+      /* Bottom menu styling */
+      .menu {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        font-size: 18px;
+        background-color: #00559f;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 12px 0;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .menu a {
+        color: white;
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+      }
+
+      .menu a:hover {
+        background-color: #003f72;
+      }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 22px;
+    }
+
+    h2, h3 {
+      font-size: 18px;
+    }
+
+    p, ul {
+      font-size: 14px;
+    }
+
+    .top-header {
+      flex-direction: row;
+      padding: 10px 0;
+    }
+
+    .top-header p {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    #language {
+      font-size: 14px;
+      padding: 4px;
+      margin-top: 8px;
+    }
+
+    .menu {
+      font-size: 14px;
+      padding: 10px 0;
+      flex-direction: row;
+    }
+
+    .menu a {
+      padding: 6px 10px;
+      margin-bottom: 5px;
+    }
+    body {
+      padding-bottom: 80px;
+    }
+  }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Top Header -->
+    <div class="top-header">
+    <p>NorthStar Імміграція</p>
+    <div>
+    <select id="language" name="language" onchange="location = this.value;" 
+        style="padding:4px 8px; font-size:16px; border-radius:5px; border:1px solid #ccc; color: #00559f; font-weight: bold;">
+      <option value="" disabled selected style="color:#00559f; font-weight:bold;">Мова 🌐</option>
+      <option value="index.html" style="color:black; font-weight:normal;">Англійська 🌐</option>
+      <option value="index_es.html" style="color:black; font-weight:normal;">Іспанська 🌐</option>
+      <option value="index_hin.html" style="color:black; font-weight:normal;">Гінді 🌐</option>
+      <option value="index_chi.html" style="color:black; font-weight:normal;">Китайська 🌐</option>
+      <option value="index_ukr.html" style="color:black; font-weight:normal;">Українська 🌐</option>
+    </select>
+    </div>
+  </div>
+
+
+    <h1>Ласкаво просимо!</h1>
+
+    <p>
+      Правовий шлях іммігранта у США може бути складним. Цей додаток є централізованою базою даних, яка допоможе вам наблизитися на крок до здійснення вашої Американської мрії.
+    </p>
+
+    <h2>Що ви знайдете тут?</h2>
+    <ul>
+      <li>Знайдіть імміграційного юриста</li>
+      <li>Дізнайтеся про програми підтримки для іммігрантів</li>
+      <li>Отримайте доступ до поширених питань з імміграції та суміжних тем</li>
+    </ul>
+
+    <section id="lawyer-directory">
+      <h2>Пошук юриста</h2>
+      <p>Шукайте імміграційних юристів за спеціалізацією, мовою, вартістю та місцезнаходженням.</p>
+    </section>
+
+    <section id="community-programs">
+      <h2>Досліджуйте програми підтримки для іммігрантів</h2>
+      <ul>
+        <li>Освіта</li>
+        <li>Фінансова допомога</li>
+        <li>Підтримка та ресурси</li>
+        <li>Послуги з працевлаштування</li>
+        <li>Юридичні послуги</li>
+      </ul>
+    </section>
+
+     <section id="immigration-faq">
+      <h2>Поширені запитання про імміграцію (FAQ)</h2>
+      <p>Дізнайтеся більше про процес імміграції до США</p>
+    </section>
+
+    <!-- Bottom Menu Bar -->
+    <div class="menu">
+      <a href="index_ukr.html">Головна 🏠</a>
+      <a href="lawyer_ukr.html">Юрист 🔍</a>
+      <a href="community_ukr.html">Спільнота 🤝</a>
+      <a href="faq_ukr.html">Питання ❓</a>
+    </div>
+
+  </body>
+</html>

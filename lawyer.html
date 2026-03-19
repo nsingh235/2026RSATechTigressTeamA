@@ -1,0 +1,411 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lawyers in North Carolina</title>
+
+  <style>
+    /* Basic page styling */
+    body {
+      margin: 0;
+      background-color: #f4f4f4;
+      text-align: center;
+      padding-bottom: 60px;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00559f;
+      font-size: 36px;
+      margin-top: 30px;
+    }
+
+    h2 {
+      color: #000000;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    /* Filter Section Styling */
+    .filters {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap; /* allow responsive wrapping */
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .filters select {
+    width: 30%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    background-color: #fafafa;
+    font-family: Arial, sans-serif;
+    color: #00559f;
+    font-weight: bold;
+    transition: border-color 0.3s;
+  }
+
+  .filters select:hover {
+    border-color: #00559f;
+  }
+
+  .filters a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #00559f;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+  }
+
+  .filters a:hover {
+    text-decoration: underline;
+  }
+    /* Lawyer box styling */
+    .lawyer {
+      background-color: #ffffff;
+      border: 5px solid #a20b0b;
+      padding: 20px;
+      margin-bottom: 20px;
+      width: 90%;
+      max-width: 300px;
+      margin: 10px auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .lawyer:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Bottom menu styling */
+    .menu {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      font-size: 18px;
+      background-color: #00559f;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 12px 0;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+    }
+
+    .menu a:hover {
+      background-color: #003f72;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      .filters {
+      padding: 10px;
+      width: 100%;
+      flex-direction: column; /* stack items vertically on mobile */
+      align-items: stretch;
+      }
+
+      .filters select {
+      width: 100%;
+      margin: 5px 0;
+      }
+      .lawyer {
+        width: 100%;
+        max-width: none;
+        margin: 10px 0;
+      }
+
+      .menu {
+        font-size: 14px;
+        padding: 10px 0;
+        flex-direction: row;
+      }
+
+      .menu a {
+        padding: 8px;
+        margin-bottom: 5px;
+      }
+
+      body {
+        padding-bottom: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Lawyers in North Carolina</h1>
+
+  <!-- Filter Section -->
+  <div class="filters">
+    <select id="languageFilter">
+      <option value="all">All Languages</option>
+      <option value="english">English</option>
+      <option value="spanish">Spanish</option>
+      <option value="hindi">Hindi</option>
+      <option value="ukranian">Ukranian</option>
+    </select>
+
+    <select id="serviceFilter">
+      <option value="all">Pro bono / Low-cost</option>
+      <option value="proBono">Pro Bono</option>
+      <option value="lowCost">Low-Cost</option>
+    </select>
+
+    <select id="locationFilter">
+      <option value="all">All Locations</option>
+      <option value="raleigh">Raleigh, NC</option>
+      <option value="charlotte">Charlotte, NC</option>
+      <option value="durham">Durham, NC</option>
+    </select>
+
+    <!-- Reset Filters Link -->
+    <a href="#" id="resetFiltersLink" onclick="resetFilters()">Reset Filters</a>
+  </div>
+
+<!-- Lawyer Cards -->
+<div class="lawyer" data-language="english,hindi" data-service="proBono" data-location="durham">
+  <h2>Marigold Migration Attorneys</h2>
+  <p><strong>Location:</strong> Durham, NC</p>
+  <p><strong>Languages spoken:</strong> English, Hindi</p>
+  <p><strong>Services:</strong> Family visas (IR, K), student visas (F, M, J), visitor visas (B), employment visas (EB, H, L).</p>
+  <p><strong><a href="contact.html?lawyerName=Marigold%20Migration%20Attorneys">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,spanish" data-service="lowCost" data-location="cary">
+  <h2>Crestwood Immigration LLC</h2>
+  <p><strong>Location:</strong> Cary, NC</p>
+  <p><strong>Languages spoken:</strong> English, Spanish</p>
+  <p><strong>Services:</strong> Employment-based visas (EB, H), family sponsorship (IR, K), visitor visas (B), student visas (F, M, J).</p>
+  <p><strong><a href="contact.html?lawyerName=Crestwood%20Immigration%20LLC">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,ukranian" data-service="proBono" data-location="chapel hill">
+  <h2>Lighthouse Legal Group</h2>
+  <p><strong>Location:</strong> Chapel Hill, NC</p>
+  <p><strong>Languages spoken:</strong> English, Ukranian</p>
+  <p><strong>Services:</strong> Diversity lottery visas (DV), religious worker visas (R, SIV), employment visas (EB, H), family sponsorship (IR, K).</p>
+  <p><strong><a href="contact.html?lawyerName=Lighthouse%20Legal%20Group">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,chinese" data-service="lowCost" data-location="raleigh">
+  <h2>Riverbend Immigration Advocates</h2>
+  <p><strong>Location:</strong> Raleigh, NC</p>
+  <p><strong>Languages spoken:</strong> English, Chinese</p>
+  <p><strong>Services:</strong> Employment visas (EB, H, L), extraordinary ability visas (O), student visas (F, M), visitor visas (B).</p>
+  <p><strong><a href="contact.html?lawyerName=Riverbend%20Immigration%20Advocates">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,spanish" data-service="proBono" data-location="morrisville">
+  <h2>Silverbrook Immigration Attorneys</h2>
+  <p><strong>Location:</strong> Morrisville, NC</p>
+  <p><strong>Languages spoken:</strong> English, Spanish</p>
+  <p><strong>Services:</strong> Family visas (IR, K), visitor visas (B), student visas (F, M, J), diversity lottery (DV).</p>
+  <p><strong><a href="contact.html?lawyerName=Silverbrook%20Immigration%20Attorneys">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,hindi" data-service="lowCost" data-location="raleigh">
+  <h2>Blueridge Visa Attorneys</h2>
+  <p><strong>Location:</strong> Raleigh, NC</p>
+  <p><strong>Languages spoken:</strong> English, Hindi</p>
+  <p><strong>Services:</strong> Employment visas (EB, H, L, O), family visas (IR, K), visitor visas (B), student visas (F, M).</p>
+  <p><strong><a href="contact.html?lawyerName=Blueridge%20Visa%20Attorneys">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,chinese" data-service="proBono" data-location="chapel hill">
+  <h2>Evergreen Legal Solutions</h2>
+  <p><strong>Location:</strong> Chapel Hill, NC</p>
+  <p><strong>Languages spoken:</strong> English, Chinese</p>
+  <p><strong>Services:</strong> Family visas (IR, K), employment-based visas (EB, H, L), student visas (F, M), visitor visas (B).</p>
+  <p><strong><a href="contact.html?lawyerName=Evergreen%20Legal%20Solutions">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,ukranian" data-service="proBono" data-location="durham">
+  <h2>Redwood Immigration Law</h2>
+  <p><strong>Location:</strong> Durham, NC</p>
+  <p><strong>Languages spoken:</strong> English, Ukranian</p>
+  <p><strong>Services:</strong> Family sponsorship (IR, K), religious worker visas (R, SIV), employment visas (EB, H), student visas (F, M, J).</p>
+  <p><strong><a href="contact.html?lawyerName=Redwood%20Immigration%20Law">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,spanish" data-service="lowCost" data-location="raleigh">
+  <h2>Northgate Visa Attorneys</h2>
+  <p><strong>Location:</strong> Raleigh, NC</p>
+  <p><strong>Languages spoken:</strong> English, Spanish</p>
+  <p><strong>Services:</strong> Employment-based visas (EB, H), extraordinary ability visas (O), visitor visas (B), family visas (IR, K), student visas (F, M).</p>
+  <p><strong><a href="contact.html?lawyerName=Northgate%20Visa%20Attorneys">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,ukranian" data-service="proBono" data-location="hillsborough">
+  <h2>Brightwood Legal Solutions</h2>
+  <p><strong>Location:</strong> Hillsborough, NC</p>
+  <p><strong>Languages spoken:</strong> English, Ukranian</p>
+  <p><strong>Services:</strong> Family sponsorship (IR, K), student visas (F, M), employment visas (EB, H, L), visitor visas (B), diversity lottery (DV).</p>
+  <p><strong><a href="contact.html?lawyerName=Brightwood%20Legal%20Solutions">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,hindi" data-service="lowCost" data-location="chapel hill">
+  <h2>Maple Leaf Immigration</h2>
+  <p><strong>Location:</strong> Chapel Hill, NC</p>
+  <p><strong>Languages spoken:</strong> English, Hindi</p>
+  <p><strong>Services:</strong> Employment visas (EB, H, L), family visas (IR, K), student visas (F, M), visitor visas (B).</p>
+  <p><strong><a href="contact.html?lawyerName=Maple%20Leaf%20Immigration">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,spanish" data-service="proBono" data-location="durham">
+  <h2>Sunset Visa Law</h2>
+  <p><strong>Location:</strong> Durham, NC</p>
+  <p><strong>Languages spoken:</strong> English, Spanish</p>
+  <p><strong>Services:</strong> Family visas (IR, K), employment visas (EB, H), student visas (F, M), visitor visas (B), diversity lottery (DV).</p>
+  <p><strong><a href="contact.html?lawyerName=Sunset%20Visa%20Law">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,chinese" data-service="lowCost" data-location="morrisville">
+  <h2>Silver Oak Immigration</h2>
+  <p><strong>Location:</strong> Morrisville, NC</p>
+  <p><strong>Languages spoken:</strong> English, Chinese</p>
+  <p><strong>Services:</strong> Employment visas (EB, H, L), extraordinary ability visas (O), family visas (IR, K), student visas (F, M).</p>
+  <p><strong><a href="contact.html?lawyerName=Silver%20Oak%20Immigration">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,hindi" data-service="proBono" data-location="raleigh">
+  <h2>Blue Horizon Immigration</h2>
+  <p><strong>Location:</strong> Raleigh, NC</p>
+  <p><strong>Languages spoken:</strong> English, Hindi</p>
+  <p><strong>Services:</strong> Family sponsorship (IR, K), student visas (F, M), visitor visas (B), employment visas (EB, H, L), diversity lottery (DV).</p>
+  <p><strong><a href="contact.html?lawyerName=Blue%20Horizon%20Immigration">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,ukranian" data-service="lowCost" data-location="cary">
+  <h2>Pinecrest Visa Attorneys</h2>
+  <p><strong>Location:</strong> Cary, NC</p>
+  <p><strong>Languages spoken:</strong> English, Ukranian</p>
+  <p><strong>Services:</strong> Employment visas (EB, H, L), family visas (IR, K), student visas (F, M), visitor visas (B), religious worker visas (R, SIV).</p>
+  <p><strong><a href="contact.html?lawyerName=Pinecrest%20Visa%20Attorneys">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,spanish" data-service="proBono" data-location="hillsborough">
+  <h2>Horizon Legal Group</h2>
+  <p><strong>Location:</strong> Hillsborough, NC</p>
+  <p><strong>Languages spoken:</strong> English, Spanish</p>
+  <p><strong>Services:</strong> Family visas (IR, K), employment visas (EB, H), student visas (F, M), visitor visas (B), diversity lottery (DV).</p>
+  <p><strong><a href="contact.html?lawyerName=Horizon%20Legal%20Group">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,chinese" data-service="lowCost" data-location="chapel hill">
+  <h2>Maplewood Immigration Attorneys</h2>
+  <p><strong>Location:</strong> Chapel Hill, NC</p>
+  <p><strong>Languages spoken:</strong> English, Chinese</p>
+  <p><strong>Services:</strong> Employment visas (EB, H, L), student visas (F, M), family visas (IR, K), visitor visas (B).</p>
+  <p><strong><a href="contact.html?lawyerName=Maplewood%20Immigration%20Attorneys">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,hindi" data-service="proBono" data-location="durham">
+  <h2>Oakwood Legal Services</h2>
+  <p><strong>Location:</strong> Durham, NC</p>
+  <p><strong>Languages spoken:</strong> English, Hindi</p>
+  <p><strong>Services:</strong> Family sponsorship (IR, K), employment visas (EB, H, L), student visas (F, M), visitor visas (B).</p>
+  <p><strong><a href="contact.html?lawyerName=Oakwood%20Legal%20Services">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,ukranian" data-service="lowCost" data-location="raleigh">
+  <h2>Cedar Lane Immigration</h2>
+  <p><strong>Location:</strong> Raleigh, NC</p>
+  <p><strong>Languages spoken:</strong> English, Ukranian</p>
+  <p><strong>Services:</strong> Employment visas (EB, H, L), family visas (IR, K), student visas (F, M), visitor visas (B), extraordinary ability visas (O).</p>
+  <p><strong><a href="contact.html?lawyerName=Cedar%20Lane%20Immigration">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,spanish" data-service="proBono" data-location="morrisville">
+  <h2>Summit Visa Attorneys</h2>
+  <p><strong>Location:</strong> Morrisville, NC</p>
+  <p><strong>Languages spoken:</strong> English, Spanish</p>
+  <p><strong>Services:</strong> Family visas (IR, K), employment visas (EB, H), visitor visas (B), student visas (F, M), diversity lottery (DV).</p>
+  <p><strong><a href="contact.html?lawyerName=Summit%20Visa%20Attorneys">Click here to contact!</a></strong></p>
+</div>
+
+<div class="lawyer" data-language="english,chinese" data-service="lowCost" data-location="hillsborough">
+  <h2>Willowbrook Immigration Law</h2>
+  <p><strong>Location:</strong> Hillsborough, NC</p>
+  <p><strong>Languages spoken:</strong> English, Chinese</p>
+  <p><strong>Services:</strong> Employment visas (EB, H, L), student visas (F, M), family visas (IR, K), visitor visas (B), diversity lottery (DV).</p>
+  <p><strong><a href="contact.html?lawyerName=Willowbrook%20Immigration%20Law">Click here to contact!</a></strong></p>
+</div>
+
+  <!-- Bottom Menu Bar -->
+  <div class="menu">
+    <a href="index.html">Home 🏠</a>
+    <a href="lawyer.html">Lawyer 🔍</a>
+    <a href="community.html">Community 🤝</a>
+    <a href="faq.html">FAQ ❓</a>
+  </div>
+
+  <script>
+    function filterLawyers() {
+      const languageFilter = document.getElementById('languageFilter').value.toLowerCase();
+      const serviceFilter = document.getElementById('serviceFilter').value.toLowerCase();
+      const locationFilter = document.getElementById('locationFilter').value.toLowerCase();
+
+      const lawyers = document.querySelectorAll('.lawyer');
+
+      lawyers.forEach(lawyer => {
+        const lawyerLanguages = lawyer.getAttribute('data-language').toLowerCase().split(',').map(s => s.trim());
+        const lawyerServices = lawyer.getAttribute('data-service').toLowerCase().split(',').map(s => s.trim());
+        const lawyerLocation = lawyer.getAttribute('data-location').toLowerCase();
+
+        const matchesLanguage = languageFilter === 'all' || lawyerLanguages.includes(languageFilter);
+        const matchesService = serviceFilter === 'all' || lawyerServices.includes(serviceFilter);
+        const matchesLocation = locationFilter === 'all' || lawyerLocation === locationFilter;
+
+        lawyer.style.display = (matchesLanguage && matchesService && matchesLocation) ? '' : 'none';
+      });
+    }
+
+    // Event listeners for filters
+    document.getElementById('languageFilter').addEventListener('change', filterLawyers);
+    document.getElementById('serviceFilter').addEventListener('change', filterLawyers);
+    document.getElementById('locationFilter').addEventListener('change', filterLawyers);
+
+    // Reset filters function
+    function resetFilters() {
+      document.getElementById('languageFilter').value = 'all';
+      document.getElementById('serviceFilter').value = 'all';
+      document.getElementById('locationFilter').value = 'all';
+
+      document.querySelectorAll('.lawyer').forEach(lawyer => lawyer.style.display = '');
+    }
+  </script>
+</body>
+</html>
