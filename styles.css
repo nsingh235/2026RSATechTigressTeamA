@@ -8,6 +8,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
+/* PHONE FRAME */
 .phone {
   width: 390px;
   height: 844px;
@@ -20,6 +21,7 @@ body {
   position: relative;
 }
 
+/* STATUS BAR */
 .status-bar {
   height: 40px;
   padding: 0 16px;
@@ -28,6 +30,21 @@ body {
   align-items: center;
 }
 
+/* TOP HEADER */
+.top-header {
+  background-color: #ff8fab;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.brand {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* OPTIONAL TOP NAV */
 .top-nav {
   display: flex;
   justify-content: center;
@@ -48,38 +65,42 @@ body {
   background: #ffd6e0;
 }
 
-.top-header {
-  background-color: #ff8fab;
-  padding: 15px 0;
-  text-align: center;
-}
-
-.top-header p {
-  margin: 0;
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-}
-
+/* CONTENT AREA */
 .content {
   flex: 1;
   overflow-y: auto;
-  padding-bottom: 70px;
+  padding: 10px 0 80px;
   text-align: center;
 }
 
+/* HEADINGS */
 h1 {
   color: #ff8fab;
 }
 
+.card h2 {
+  color: #ff8fab;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* CARD */
 .card {
   background: white;
   margin: 20px auto;
   padding: 18px;
   border-radius: 15px;
   width: 85%;
+  text-align: left; /* moved from duplicate rules */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
+/* TEXT INSIDE CARDS */
+.card p {
+  margin: 5px 0;
+}
+
+/* BUTTON */
 .btn {
   background-color: #80ed99;
   border: none;
@@ -87,12 +108,14 @@ h1 {
   border-radius: 10px;
   cursor: pointer;
   margin: 5px;
+  transition: 0.2s;
 }
 
 .btn:hover {
   background-color: #57cc99;
 }
 
+/* BOTTOM MENU */
 .menu {
   position: absolute;
   bottom: 0;
@@ -106,35 +129,13 @@ h1 {
 .menu a {
   color: white;
   text-decoration: none;
+  font-weight: bold;
 }
 
-.card h2 {
-  color: #ff8fab;
-  margin-bottom: 10px;
-}
-
-.card p {
-  margin: 5px 0;
-}
-
-.card {
-  text-align: left;
-}
-
-.card h2 {
-  text-align: center;
-}
-
+/* DIVIDER */
 hr {
   border: none;
   height: 1px;
   background: #eee;
   margin: 10px 0;
-}
-
-.brand {
-  text-decoration: none;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
 }
