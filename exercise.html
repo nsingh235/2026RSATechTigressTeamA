@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pieceful - Exercise</title>
+
+<link rel="stylesheet" href="styles.css">
+
+<style>
+.progress-bar {
+  height: 12px;
+  background: #eee;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.progress {
+  height: 100%;
+  background: #ff8fab;
+  width: 0%;
+  border-radius: 10px;
+}
+
+.quick-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+</style>
+</head>
+
+<body>
+
+<div class="phone">
+
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <div>9:41</div>
+    <div>🔋</div>
+  </div>
+
+  <!-- Header -->
+  <div class="top-header">
+    <p>🏃 Exercise</p>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Progress -->
+    <div class="card">
+      <h2>Today's Movement</h2>
+
+      <p><span id="exerciseCount">0</span> / 30 min</p>
+
+      <div class="progress-bar">
+        <div class="progress" id="progressBar"></div>
+      </div>
+    </div>
+
+    <!-- Quick Add -->
+    <div class="card">
+      <h2>Quick Add</h2>
+
+      <div class="quick-buttons">
+        <button class="btn" onclick="quickAdd(5)">+5</button>
+        <button class="btn" onclick="quickAdd(10)">+10</button>
+        <button class="btn" onclick="quickAdd(15)">+15</button>
+        <button class="btn" onclick="quickAdd(30)">+30</button>
+      </div>
+    </div>
+
+    <!-- Custom Input -->
+    <div class="card">
+      <h2>Add Workout</h2>
+
+      <input id="exerciseInput" type="number" placeholder="Minutes" />
+      <button class="btn" onclick="addExercise()">Add</button>
+    </div>
+
+    <!-- Streak -->
+    <div class="card">
+      <h2>🔥 Streak</h2>
+      <p><span id="exerciseStreak">0</span> days</p>
+    </div>
+
+  </div>
+
+  <!-- Menu -->
+  <div class="menu">
+    <a href="index.html">Home 🏠</a>
+    <a href="exercise.html">Exercise 🏃</a>
+    <a href="nutrition.html">Nutrition 🍽</a>
+    <a href="goals.html">Goals 📊</a>
+    <a href="history.html">History 📅</a>
+  </div>
+
+</div>
+
+<script src="exercise.js"></script>
+
+</body>
+</html>

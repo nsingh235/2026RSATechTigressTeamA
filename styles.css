@@ -96,3 +96,18 @@ h1 {
 .card p {
   margin: 5px 0;
 }
+
+.card {
+  text-align: left;
+}
+
+.card h2 {
+  text-align: center;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: #eee;
+  margin: 10px 0;
+}

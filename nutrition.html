@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pieceful - Nutrition</title>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="phone">
+
+  <div class="status-bar">
+    <div>9:41</div>
+    <div>🔋</div>
+  </div>
+
+  <div class="top-header">
+    <p>🍽 Nutrition</p>
+  </div>
+
+  <div class="content">
+
+    <!-- Water -->
+    <div class="card">
+      <h2>💧 Hydration</h2>
+      <button class="btn" onclick="addWater()">+1 Glass</button>
+      <p><span id="waterCount">0</span> / 8 glasses</p>
+    </div>
+
+    <!-- Meals -->
+    <div class="card">
+      <h2>🍴 Meals</h2>
+
+      <select id="mealType">
+        <option>Breakfast</option>
+        <option>Lunch</option>
+        <option>Dinner</option>
+        <option>Snack</option>
+      </select>
+
+      <input id="mealInput" placeholder="What did you eat?" />
+      <button class="btn" onclick="addMeal()">Add Meal</button>
+
+      <ul id="mealList"></ul>
+    </div>
+
+    <!-- MyPlate -->
+    <div class="card">
+      <h2>🥗 MyPlate</h2>
+      <p>Track your balance today:</p>
+
+      <p>🍎 Fruits: <span id="fruitCount">0</span></p>
+      <p>🥦 Veggies: <span id="vegCount">0</span></p>
+      <p>🍞 Grains: <span id="grainCount">0</span></p>
+      <p>🍗 Protein: <span id="proteinCount">0</span></p>
+
+      <button class="btn" onclick="addFood('fruit')">+ Fruit</button>
+      <button class="btn" onclick="addFood('veg')">+ Veg</button>
+      <button class="btn" onclick="addFood('grain')">+ Grain</button>
+      <button class="btn" onclick="addFood('protein')">+ Protein</button>
+    </div>
+
+  </div>
+
+  <div class="menu">
+    <a href="index.html">Home 🏠</a>
+    <a href="exercise.html">Exercise 🏃</a>
+    <a href="nutrition.html">Nutrition 🍽</a>
+    <a href="goals.html">Goals 📊</a>
+  </div>
+
+</div>
+
+<script src="nutrition.js"></script>
+
+</body>
+</html>
