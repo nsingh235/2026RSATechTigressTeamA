@@ -2,141 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pieceful</title>
 
-  <style>
-    body {
-      margin: 0;
-      background: linear-gradient(135deg, #fce7f3, #e0f7fa);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-    }
-
-    /* Phone Frame */
-    .phone {
-      width: 390px;
-      height: 844px;
-      background-color: #fff0f5;
-      border-radius: 40px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    /* Status Bar */
-    .status-bar {
-      height: 40px;
-      padding: 0 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 14px;
-      background: transparent;
-    }
-
-    /* Header */
-    .top-header {
-      background-color: #ff8fab;
-      padding: 15px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .top-header p {
-      margin: 0;
-      font-size: 18px;
-      font-weight: bold;
-      color: white;
-    }
-
-    /* Content */
-    .content {
-      flex: 1;
-      overflow-y: auto;
-      padding-bottom: 70px;
-      text-align: center;
-    }
-
-    h1 {
-      color: #ff8fab;
-      font-size: 26px;
-      margin-top: 20px;
-    }
-
-    h2 {
-      font-size: 20px;
-      color: #333;
-    }
-
-    p {
-      font-size: 14px;
-      color: #333;
-      line-height: 1.5;
-    }
-
-    /* Card */
-    .card {
-      background: white;
-      margin: 20px auto;
-      padding: 18px;
-      border-radius: 15px;
-      width: 85%;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-
-    /* Button */
-    .btn {
-      background-color: #80ed99;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 14px;
-      margin-top: 10px;
-    }
-
-    .btn:hover {
-      background-color: #57cc99;
-    }
-
-    /* Menu (Bottom Nav) */
-    .menu {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      background-color: #80ed99;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 12px 0;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .menu a {
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
-      padding: 6px 10px;
-      border-radius: 8px;
-    }
-
-    .menu a:hover {
-      background-color: #57cc99;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-  <!-- Phone Frame -->
   <div class="phone">
 
     <!-- Status Bar -->
@@ -153,17 +26,34 @@
     <!-- Content -->
     <div class="content">
 
-      <h1>Welcome 💗</h1>
+      <h1 id="greeting">Welcome 💗</h1>
 
       <p>
         Take a moment for yourself. Breathe, reset, and remind yourself of your strength.
       </p>
 
-      <!-- Affirmations -->
+      <!-- Affirmation -->
       <div class="card">
         <h2>🌸 Daily Affirmation</h2>
-        <p id="affirmation">You are enough just as you are 💖</p>
-        <button class="btn" onclick="newAffirmation()">New Affirmation</button>
+        <p id="affirmation">You are enough 💖</p>
+        <button class="btn" onclick="newAffirmation()">✨ New Affirmation</button>
+      </div>
+
+      <!-- Mood -->
+      <div class="card">
+        <h2>💭 How are you feeling?</h2>
+        <button class="btn" onclick="setMood('😊')">😊</button>
+        <button class="btn" onclick="setMood('😐')">😐</button>
+        <button class="btn" onclick="setMood('😔')">😔</button>
+        <p id="moodText"></p>
+      </div>
+
+      <!-- Daily Win -->
+      <div class="card">
+        <h2>🏆 Daily Win</h2>
+        <input id="winInput" placeholder="Something good today"/>
+        <button class="btn" onclick="saveWin()">Save</button>
+        <p id="winText"></p>
       </div>
 
     </div>
@@ -173,25 +63,12 @@
       <a href="index.html">Home 🏠</a>
       <a href="health.html">Health ❤️</a>
       <a href="goals.html">Goals 📊</a>
+      <a href="history.html">History 📅</a>
     </div>
 
   </div>
 
-  <script>
-    const affirmations = [
-      "You are enough 💖",
-      "You are growing 🌱",
-      "You are capable ✨",
-      "You matter 💕",
-      "Keep going 🌟",
-      "You are strong 💪"
-    ];
-
-    function newAffirmation() {
-      let rand = affirmations[Math.floor(Math.random() * affirmations.length)];
-      document.getElementById("affirmation").innerText = rand;
-    }
-  </script>
+  <script src="app.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #fce7f3, #e0f7fa);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.phone {
+  width: 390px;
+  height: 844px;
+  background-color: #fff0f5;
+  border-radius: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.status-bar {
+  height: 40px;
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-header {
+  background-color: #ff8fab;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.top-header p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 70px;
+  text-align: center;
+}
+
+h1 {
+  color: #ff8fab;
+}
+
+.card {
+  background: white;
+  margin: 20px auto;
+  padding: 18px;
+  border-radius: 15px;
+  width: 85%;
+}
+
+.btn {
+  background-color: #80ed99;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.btn:hover {
+  background-color: #57cc99;
+}
+
+.menu {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #80ed99;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+}
