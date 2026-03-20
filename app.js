@@ -29,7 +29,7 @@ else greeting = "Good evening 🌙";
 
 document.getElementById("greeting").innerText = greeting;
 
-// STORAGE HELPERS
+// STORAGE
 function getTodayKey() {
   return new Date().toISOString().split("T")[0];
 }
@@ -73,5 +73,4 @@ function saveWin() {
   document.getElementById("winInput").value = "";
 }
 
-// INIT
 loadToday();

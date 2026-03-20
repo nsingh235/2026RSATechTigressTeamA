@@ -1,7 +1,7 @@
 
 function getAllDates() {
   let dates = Object.keys(localStorage)
-    .filter(key => /^\d{4}-\d{2}-\d{2}$/.test(key)) // only date keys
+    .filter(key => /^\d{4}-\d{2}-\d{2}$/.test(key))
     .sort()
     .reverse();
 
@@ -52,7 +52,7 @@ function loadHistory() {
   });
 }
 
-// Format date nicely
+// Format date
 function formatDate(dateStr) {
   let date = new Date(dateStr);
 

@@ -12,8 +12,8 @@ body {
 /* PHONE FRAME */
 .phone {
   width: 390px;
-  height: 100vh; /* use viewport height */
-  max-height: 844px; /* optional: cap for very tall screens */
+  height: 100vh;
+  max-height: 844px;
   background-color: #fff0f5;
   border-radius: 40px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
@@ -23,7 +23,7 @@ body {
   position: relative;
 }
 
-/* TOP HEADER (compact) */
+/* TOP HEADER */
 .top-header {
   background-color: #ff8fab;
   padding: 6px 12px;
@@ -34,7 +34,6 @@ body {
   box-sizing: border-box;
 }
 
-/* LEFT SIDE (logo + title) */
 .left-group {
   display: flex;
   align-items: center;
@@ -55,7 +54,6 @@ body {
   line-height: 1;
 }
 
-/* RIGHT SIDE (home + settings) */
 .right-group {
   display: flex;
   gap: 6px;

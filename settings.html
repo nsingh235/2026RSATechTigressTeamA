@@ -133,7 +133,7 @@ function saveTabs() {
   localStorage.setItem("enabledTabs", JSON.stringify(newEnabledTabs));
   alert("Tabs updated!");
 
-  // Update bottom menu immediately
+  // Update bottom menu
   const menuLinks = document.querySelectorAll("#menu a");
   menuLinks.forEach(link => {
     const tabName = link.textContent.replace(/[^a-zA-Z]/g,"").trim();

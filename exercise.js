@@ -72,5 +72,4 @@ function updateStreak() {
   document.getElementById("exerciseStreak").innerText = streak;
 }
 
-// Init
 loadExercise();

@@ -113,5 +113,4 @@ function renderGoals() {
   updateProgress();
 }
 
-// Initial render
 renderGoals();
